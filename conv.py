@@ -62,9 +62,12 @@ class MianWindow(gui.ConvFrame):
             for filename in files:
                 fpath = os.path.join(root,filename)
                 if fpath.endswith(tuple(self.extlist)):
-                    self.listBoxLog.Append( convert(os.path.join(root,filename),self.m_choice.GetStringSelection()) )
+                    res = convert(os.path.join(root,filename),self.m_choice.GetStringSelection())
+                    time.sleep(0.1)
+                    self.listBoxLog.Append( res )
                 else:
-                    print(fpath)
+                    pass
+                    # self.listBoxLog.Append( res )
                 time.sleep(0.1)
         self.listBoxLog.Append(u'All files done')
 
