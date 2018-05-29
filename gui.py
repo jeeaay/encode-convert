@@ -6,7 +6,7 @@
  * @Author: jeay 
  * @Date: 2018-05-28 15:00:31 
  * @Last Modified by: jeay
- * @Last Modified time: 2018-05-28 17:35:21
+ * @Last Modified time: 2018-05-29 17:07:36
  */
 '''
 
@@ -123,7 +123,7 @@ class ConvFrame ( wx.Frame ):
 		self.staticTextLog.Wrap( -1 )
 		gbSizerLog.Add( self.staticTextLog, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
 		
-		listBoxLogChoices = [ u"logs" ]
+		listBoxLogChoices = [ ]
 		self.listBoxLog = wx.ListBox( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 353,180 ), listBoxLogChoices, 0 )
 		gbSizerLog.Add( self.listBoxLog, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 2 ), wx.ALL, 5 )
 		
