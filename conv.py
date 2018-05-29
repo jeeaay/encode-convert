@@ -45,22 +45,10 @@ def convert(filename, out_enc = "UTF8"):
         return filename + " error "
         pass
         #print(" error")
-        
-#def main():
-    
-    """ 
-    for (root, dirs, files) in os.walk(os.getcwd()):
-        for filename in files:
-            fpath = os.path.join(root,filename)
-            if fpath.endswith(('.html','.js','.txt','.htm','.css')):
-                convert(os.path.join(root,filename))
-            else:
-                print(fpath)
-    """
 
 class MianWindow(gui.ConvFrame):
     def init_main_window(self):  
-        self.m_dirPicker1.SetPath(os.getcwd())
+        self.dirPicker.SetPath(os.getcwd())
         self.extlist = ['.txt','.php','.html','.htm','.css','.js','.sass']
     def OnChangeCheckBox( self, event ):
         cb = event.GetEventObject()
@@ -70,15 +58,15 @@ class MianWindow(gui.ConvFrame):
             self.extlist.remove(cb.GetLabel())
 		#event.Skip()
     def StartConvert( self, event ):
-        for (root, dirs, files) in os.walk(self.m_dirPicker1.GetPath()):
+        for (root, dirs, files) in os.walk(self.dirPicker.GetPath()):
             for filename in files:
                 fpath = os.path.join(root,filename)
-                if fpath.endswith(('.html','.js','.txt','.htm','.css')):
-                    self.m_listBox1.Append( convert(os.path.join(root,filename),self.m_choice.GetStringSelection()) )
+                if fpath.endswith(tuple(self.extlist)):
+                    self.listBoxLog.Append( convert(os.path.join(root,filename),self.m_choice.GetStringSelection()) )
                 else:
                     print(fpath)
                 time.sleep(0.1)
-        self.m_listBox1.Append(u'All files done')
+        self.listBoxLog.Append(u'All files done')
 
 if __name__ == '__main__':  
     app = wx.App()  
