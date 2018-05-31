@@ -6,17 +6,16 @@
  * @Author: jeay 
  * @Date: 2018-05-28 09:03:01 
  * @Last Modified by: jeay
- * @Last Modified time: 2018-05-29 17:16:32
+ * @Last Modified time: 2018-05-31 10:22:42
  */
 '''
 
 import os,wx
 import gui,conv
-
-from threading import Thread
+import threading
 from wx.lib.pubsub import pub
-
-__author__ = 'jeay'
+# from threading import Thread
+# from wx.lib.pubsub import pub
 
 class MianWindow(gui.ConvFrame):
     def init_main_window(self):
@@ -52,13 +51,13 @@ class MianWindow(gui.ConvFrame):
                 time.sleep(0.1)
         self.listBoxLog.Append(u'All files done') """
 
-class ConvThread(Thread):
+class ConvThread(threading.Thread):
     def __init__(self,srcDir,extTuple,outEncode):
         #线程实例化时立即启动
         self.srcDir = srcDir
         self.extTuple = extTuple
         self.outEncode = outEncode
-        Thread.__init__(self)
+        threading.Thread.__init__(self)
         self.start()
     def run(self):
         #线程执行的代码

@@ -36,7 +36,7 @@ www/upload
 
 config.development.js
 adapter.development.js
-*.spec
+
 __pycache__
 build
 dist
